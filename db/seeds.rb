@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+Product.delete_all
+Product.create(:title => 'Foobar product',
+               :description => %{<p>Here is the description for <b>Foobar Product</b></p>},
+               :image_url => '/images/foobar.jpg',
+               :price => 49.50)
