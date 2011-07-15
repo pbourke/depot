@@ -1,8 +1,30 @@
 require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "empty attributes should not pass validation" do
+    product = Product.new
+    assert product.invalid?
+    assert product.errors[:title].any?
+    assert product.errors[:description].any?
+    assert product.errors[:price].any?
+    assert product.errors[:image_url].any?
+  end
+  
+  test "price must be positive" do
+    product = Product.new(:title => "test",
+                          :description => "foobar",
+                          :image_url => "xyz.jpg")
+    product.price = -1
+    assert product.invalid?
+    assert_equal "must be greater than or equal to 0.01",
+      product.errors[:price].join('; ')
+
+    product.price = 0
+    assert product.invalid?
+    assert_equal "must be greater than or equal to 0.01",
+      product.errors[:price].join('; ')
+
+    product.price = 1
+    assert product.valid?
   end
 end
