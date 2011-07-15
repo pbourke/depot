@@ -11,3 +11,11 @@ two:
   description: MyText
   image_url: img2.png
   price: 9.99
+
+bacon:
+  title: The Joy of Bacon
+  description:
+    Need we say more? Bacon is a joy, and this text is a 
+    hymn to all things baconic.
+  price: 32.43
+  image_url: joy_of_bacon_cover.jpg
