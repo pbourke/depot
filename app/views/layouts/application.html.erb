@@ -12,10 +12,13 @@
     <%= @page_title || "Product Catalog" %>
   </div>
   <div id="columns">
-    <a href="http://www....">Home</a><br/>
-    <a href="http://www..../faq">Questions</a><br/>
-    <a href="http://www..../news">News</a><br/>
-    <a href="http://www..../conact">Contact</a><br/>
+    <div id="side">
+      <p><%= Time.new.to_formatted_s(:short) %></p>
+      <a href="http://www....">Home</a><br/>
+      <a href="http://www..../faq">Questions</a><br/>
+      <a href="http://www..../news">News</a><br/>
+      <a href="http://www..../conact">Contact</a><br/>
+    </div>
   </div>
   <div id="main">
     <%= yield %>

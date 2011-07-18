@@ -35,6 +35,12 @@ class ProductsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should show Bacon" do
+    bacon = products(:bacon)
+    get :show, :id => bacon.id
+    assert_select '#product_title', /Bacon/
+  end
+
   test "should get edit" do
     get :edit, :id => @product.to_param
     assert_response :success
