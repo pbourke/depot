@@ -46,4 +46,24 @@ class LineItemsControllerTest < ActionController::TestCase
 
     assert_redirected_to line_items_path
   end
+
+  test "should add unique product" do
+    cart = carts(:one)
+    product = products(:one)
+    session[:cart_id] = cart.id
+    assert_difference('cart.line_items.count', 1) do
+      post :create, :product_id => product.id
+    end
+  end
+
+  test "should add duplicate product" do
+    cart = carts(:one)
+    product = products(:one)
+    session[:cart_id] = cart.id
+    post :create, :product_id => product.id
+    assert_no_difference('cart.line_items.count') do
+      post :create, :product_id => product.id
+    end
+    assert_equal 2, cart.line_items[0].quantity
+  end
 end

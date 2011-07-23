@@ -30,6 +30,12 @@ class ProductsControllerTest < ActionController::TestCase
     assert_redirected_to product_path(assigns(:product))
   end
 
+  test "should reject duplicate" do
+    assert_no_difference('Product.count') do
+      post :create, :product => products(:one)
+    end
+  end
+
   test "should show product" do
     get :show, :id => @product.to_param
     assert_response :success
@@ -52,8 +58,9 @@ class ProductsControllerTest < ActionController::TestCase
   end
 
   test "should destroy product" do
+    p2 = products(:two)
     assert_difference('Product.count', -1) do
-      delete :destroy, :id => @product.to_param
+      delete :destroy, :id => p2.to_param
     end
 
     assert_redirected_to products_path

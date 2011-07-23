@@ -1,18 +1,21 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  id: 1
   title: MyString
   description: MyText
   image_url: img.jpg
   price: 9.99
 
 two:
+  id: 2
   title: MyString Two
   description: MyText
   image_url: img2.png
   price: 9.99
 
 bacon:
+  id: 3
   title: The Joy of Bacon
   description:
     Need we say more? Bacon is a joy, and this text is a 
